@@ -14,7 +14,6 @@ pipeline {
 
     stage('Build') {
       steps {
-        // Activate NodeJS tool configured as 'node18'
         nodejs('node18') {
           sh 'npm install'
           sh 'npm run build'
