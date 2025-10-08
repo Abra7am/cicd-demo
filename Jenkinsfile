@@ -35,6 +35,7 @@ pipeline {
         script {
           def port = (env.BRANCH_NAME == 'main') ? '3000' : '3001'
           sh """
+            chmod 666 /var/run/docker.sock || true
             docker build -t ${IMAGE_NAME}:${env.BRANCH_NAME} \
             --build-arg APP_PORT=${port} .
           """
