@@ -4,6 +4,8 @@ import './App.css';
 
 class App extends Component {
   render() {
+    const environment = process.env.REACT_APP_ENV || "unknown";
+    const port = environment === "main" ? 3000 : 3001;
     return (
       <div className="App">
         <header className="App-header">
@@ -11,7 +13,7 @@ class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+          Welcome to React [{environment} branch], port: {port}
         </p>
       </div>
     );
