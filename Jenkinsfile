@@ -14,15 +14,20 @@ pipeline {
 
     stage('Build') {
       steps {
-        sh 'npm install'
-        sh 'npm run build'
+        // Activate NodeJS tool configured as 'node18'
+        withNodeJS('node18') {
+          sh 'npm install'
+          sh 'npm run build'
+        }
       }
     }
 
     stage('Test') {
       steps {
-        echo '🧪 Running tests...'
-        sh 'npm test || echo "Tests skipped for demo"'
+        withNodeJS('node18') {
+          echo '🧪 Running tests...'
+          sh 'npm test || echo "Tests skipped for demo"'
+        }
       }
     }
 
