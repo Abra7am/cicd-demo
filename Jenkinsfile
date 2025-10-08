@@ -15,7 +15,7 @@ pipeline {
     stage('Build') {
       steps {
         // Activate NodeJS tool configured as 'node18'
-        withNodeJS('node18') {
+        nodejs('node18') {
           sh 'npm install'
           sh 'npm run build'
         }
@@ -24,7 +24,7 @@ pipeline {
 
     stage('Test') {
       steps {
-        withNodeJS('node18') {
+        nodejs('node18') {
           echo '🧪 Running tests...'
           sh 'npm test || echo "Tests skipped for demo"'
         }
